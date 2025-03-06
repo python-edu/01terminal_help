@@ -1,14 +1,14 @@
 # Contents
 
  - [General](#general)
- - [Scoop instalation](#scoop-instalation)
- - [Micro instalation](#micro-instalation)
- - [fzf instalation](#fzf-instalation)
- - [PowerShell setup](#powershell-setup)
-   - [Fnuctions](#functions)
-   - [Aliases](#aliases)
-   - [EDITOR variable](#editor-variable)
-   - [PROFILE](#profile)
+ - [For Windows](#for-windows)
+   - [Scoop instalation](#scoop-instalation)
+   - [Micro instalation](#micro-instalation)
+   - [fzf instalation](#fzf-instalation)
+   - [PowerShell setup](#powershell-setup)
+
+ - [For Linux](#for-linux)
+ - [Tools](#tools)
  - [Web browser](#web-browser)
 
 
@@ -25,8 +25,7 @@ For working with Python, a tool environment will be prepared to facilitate work 
 Clone this repository to your computer:
 - start terminal
 - go (create) to the folder where you want to put the repository
-- `git clone ...` - clone the repository
-
+- `git clone https://github.com/python-edu/01terminal_help.git` - clone the repository
 
 
 
@@ -80,44 +79,67 @@ terminal or saved to a special configuration file, the location of which is set 
 >`$EDITOR` - this variable must be set in each operating system.
 
 
-### PROFILE
-
-`$PROFILE`: A PowerShell system variable that stores the path to the user's profile file. This is a script that is
-automatically executed when PowerShell starts. In the PowerShell terminal:
-
-1. `echo $PROFILE`: this will show you the location of the PowerShell configuration file eg.:
-`C:\Users\test1\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
-2. `dir Documents`: this will show if there is a folder `WindowsPowerShell` in the `Documents` directory:
- - `mkdir .\Documents\WindowsPowerShell`: use this command to create directory `WindowsPowerShell` if it does not exist
-3. `micro $PROFILE`: editor will open/create the file for editing
-
-
-### EDITOR variable
-
-`$EDITOR`: An environment variable that indicates the default text editor used in the terminal. Many programs can use
-this variable, such as Git, VS Code, ipython, etc. In the `$PROFILE` file add the following entry:
-
-```
-$EDITOR = "micro"
-```
+1. **PROFILE**
+  `$PROFILE`: A PowerShell system variable that stores the path to the user's profile file. This is a script that is
+  automatically executed when PowerShell starts. In the PowerShell terminal:
+  
+  >- `echo $PROFILE`: this will show you the location of the PowerShell configuration file eg.:
+  `C:\Users\test1\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
+  >- `dir Documents`: this will show if there is a folder `WindowsPowerShell` in the `Documents` directory:
+    ```mkdir .\Documents\WindowsPowerShell```
+    use this command to create directory `WindowsPowerShell` if it does not exist
+  >- `micro $PROFILE`: editor will open/create the file for editing
 
 
----
+2. **EDITOR variable**
+  >`$EDITOR`: An environment variable that indicates the default text editor used in the terminal. Many programs can use
+  this variable, such as Git, VS Code, ipython, etc. In the `$PROFILE` file add the following entry:
+  
+  ```
+  $EDITOR = "micro"
+  ```
 
-## Aliases
+3. **Aliases**
+  For frequently executed commands, you can define shortcuts, so-called aliases, which speed up work, e.g.:
+  
+  ```micro $PROFILE
+  Set-Alias mc micro
+  ```
+  - this allows you to launch the micro editor by typing 2 characters `mc`.
 
-For frequently executed commands, you can define shortcuts, so-called aliases, which speed up work, e.g.:
-
-```micro $PROFILE
-Set-Alias mc micro
-```
-- this allows you to launch the micro editor by typing 2 characters `mc`.
 
 
-## Fnuctions
+# For Linux
 
-1. Searching for files using fzf:
+1. Installation of dependencies
+  In distributions based on the `Debian` system, programs such as `fzf` and `micro` should be available in official
+  repositories - this is the case, for example, for `Debian 12`. If necessary, use the information contained on the
+  websites of these programs.
+  
+  Example of installation:
+  ```bash
+  sudo apt update
+  sudo apt install fzf micro
+  ```
 
+2. Configuration
+  - copy the `bash_func.sh` file (downloaded from the repository) to the directory in which you store your own scripts
+  (let's assume that this is the `.scripts` catalog)
+  - use the `chmod` command to make the script executable
+  ```bash
+  cp bash_func.sh ~/.scripts/fzf_func.sh
+  chmod +x ~/.scripts/fzf_func.sh
+  ```
+
+  - open the `.bashrc` file eg.: `micro .bashrc`
+  - add at the end of the file: path to the directory with your scripts (eg. `~/.scripts`) to `$PATH`
+  - add at the end of the file: `source path_to_script.sh`
+  -
+
+  ```bash
+  export PATH="$HOME/.scripts:$PATH"
+  source $HOME/.scripts/fzf_linux_func.sh
+  ```
 
 
 
@@ -133,6 +155,25 @@ Set-Alias mc micro
   - `<ctr> + o`: open a file (prompts for filename)
   - `<ctr> + s`: save current file.
 
+
+
+## Tools
+If the software installation and configuration have been made, the following tools for work in the terminal should be
+available:
+
+  - `mc`: launches the user-defined editor - probably `micro`
+  - `fzf`: interactive file search in the current working directory
+  - `mcc`: file search in the user's home directory with content preview (only text files) and opening to the edition of
+     the selected file
+  - `cdd`: search for catalogs with a preview of their content and transition to the selected directory
+
+In the entered patterns you can use:
+  - `$` - means that the pattern ends the line, e.g. TXT $ will search for all files or catalogs ending with `txt`
+  - `|` logical `or` e.g.`txt $ | csv`
+  - `' '` (space) logical `and` eg: `txt$ csv`
+
+
+
 # Web browser
 
 To view rendered `markdown` files, you may find useful browser extensions:
@@ -142,36 +183,3 @@ To view rendered `markdown` files, you may find useful browser extensions:
   3. Microsoft Edge: Markdown Preview
   4. Safari: QLMarkdown
 
-
-
-
-
-The scripts define environmental variables, e.g. `$ editor` and functions for viewing files and directors.
-
-Dependence:
-1. Windows:
-- Scoop - xxx
-- micro
-- FZF
-
-2. Linux:
-- FZF
-- any editor working in the terminal, e.g. VIM/Nvim, Nano, Micro
-
-
-# Windows
-
-
-File `profile.ps1` - `PowerShell` configuration:
-- start Terminal (`PowerShell`)
-- `echo $ profile`: display the path to the configuration file
-- check if there is a catalog specified in `$PROFILE`a - if not create it, for example: `mkdir Documents \ catalog_name`
-- download the file from the repository and copy it to the place specified by `$PROFILE`:` cp profile.sp1 $PROFILE`
-- restart `PowerShell`
-
-
-# Linux
-
-On Linux:
- - edit your `~/.bashrc` (or `~./profile`) file
- - add line: `export EDITOR=micro`
