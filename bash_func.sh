@@ -5,11 +5,13 @@
 # EDITOR="nano"
 EDITOR="nvim"
 
+alias mc=$EDITOR
+
 # Allows the user to set their favorite editor (default is nano)
-export EDITOR="${EDITOR:-nano}"
+export EDITOR="${EDITOR:-micro}"
 
 # nvv function - search files and open in user editor
-nvv() {
+mcc() {
     local file
     file=$(find "$HOME" -type f \( -name ".*" -o -name "*" \) 2>/dev/null \
         | fzf --exact \
