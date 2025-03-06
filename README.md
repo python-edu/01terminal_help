@@ -1,6 +1,6 @@
 # Contents
 
- - [General](#general)
+ - [General information](#general-information)
  - [For Windows](#for-windows)
    - [Scoop instalation](#scoop-instalation)
    - [Micro instalation](#micro-instalation)
@@ -92,11 +92,11 @@ terminal or saved to a special configuration file, the location of which is set 
 
 
 2. **EDITOR variable**
-  >`$EDITOR`: An environment variable that indicates the default text editor used in the terminal. Many programs can use
+  >`$env:EDITOR`: An environment variable that indicates the default text editor used in the terminal. Many programs can use
   this variable, such as Git, VS Code, ipython, etc. In the `$PROFILE` file add the following entry:
   
   ```
-  $EDITOR = "micro"
+  $env:EDITOR = "micro"
   ```
 
 3. **Aliases**
