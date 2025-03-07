@@ -7,33 +7,34 @@ Set-Alias mc $env:EDITOR
 
 
 
+
 # Funkcja mcc - wyszukiwanie plików i otwieranie w edytorze
 function mcc {
-    $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue | 
-        Select-Object -ExpandProperty FullName | 
+    $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue |
+        Select-Object -ExpandProperty FullName |
         fzf --exact --prompt="Enter file pattern: " --info=inline `
-            --preview="powershell -NoProfile -Command {
-                param([string]`$f)
-                if (Test-Path `$f -PathType Leaf) {
+            --preview="powershell -NoProfile -ExecutionPolicy Bypass -Command {
+                param([string]`$f) 
+                if (Test-Path `$f -PathType Leaf) { 
                     `$size = (Get-Item `$f).Length
                     if (`$size -lt 1048576) {
                         try {
                             `$content = Get-Content -Path `$f -Raw -ErrorAction Stop
                             if (`$content -match '[\x00-\x08\x0E-\x1F\x7F]') {
-                                '--- [BINARY FILE] ---'
+                                Write-Output '--- [BINARY FILE] ---'
                             } else {
-                                `$content
+                                Write-Output `$content
                             }
                         } catch {
-                            '--- [CANNOT READ FILE] ---'
+                            Write-Output '--- [CANNOT READ FILE] ---'
                         }
                     } else {
-                        '--- [BINARY FILE] ---'
+                        Write-Output '--- [BINARY FILE] ---'
                     }
                 } else {
-                    '--- [FILE NOT FOUND] ---'
+                    Write-Output '--- [FILE NOT FOUND] ---'
                 }
-            }" --preview-window=wrap
+            }" --preview-window=wrap --preview-label="Preview"
 
     if ($file -and ($file -ne "")) {
         Write-Host "Opening: $file" -ForegroundColor Green
