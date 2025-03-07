@@ -19,10 +19,22 @@ function mcc {
 
 
 
+# 🔹 Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
+function cdd {
+    $dir = fd --type directory --follow --exclude .git . |
+           fzf --exact --prompt="Enter directory pattern: " `
+               --preview 'ls "{}"'
+
+    if ($dir) {
+        cls
+        Set-Location -Path $dir
+        Get-ChildItem -Force
+    }
+}
 
 
 # Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
-function cdd {
+function cdd1 {
     $dir = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName } | 
         fzf --exact --prompt="Enter directory template: " `
             --preview='dir {}'
