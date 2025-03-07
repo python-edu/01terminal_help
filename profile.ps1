@@ -23,8 +23,7 @@ function mcc {
 # searches for directories, previews and navigates to the selected folder
 function cdd {
     $dir = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName } | 
-        fzf --exact --prompt="Enter directory template: " `
-            --preview='dir {}'
+        fzf --exact --prompt="Enter directory template: " --preview='dir {}'
 
     if ($dir) {
         cls
