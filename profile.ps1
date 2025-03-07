@@ -5,18 +5,17 @@ $env:EDITOR = "nvim"  # Zmień na: "micro", "vim", "code", itp.
 Set-Alias mc $env:EDITOR
 
 
-
-
 function mcc {
     $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName | 
         fzf --exact --prompt="Enter file pattern: " --info=inline `
-            --preview="powershell -Command {
-                $file = '{}'
-                if ((Get-Item $file).Length -lt 1048576) { # Sprawdza czy plik < 1MB
-                    $type = (Get-Content $file -Raw -ErrorAction SilentlyContinue) -match '\P{C}' 
-                    if ($type) { Get-Content -Path $file -Raw -ErrorAction SilentlyContinue } else { '--- [BINARY FILE] ---' }
-                } else { '--- [BINARY FILE] ---' }
-            }"
+            --preview="powershell -NoProfile -ExecutionPolicy Bypass -Command `
+            \"`$file = '{}'; `
+            if ((Get-Item `$file).Length -lt 1048576) { `
+                try { `
+                    `$content = Get-Content -Path `$file -Raw -ErrorAction Stop; `
+                    if (`$content -match '\P{C}') { `$content } else { '--- [BINARY FILE] ---' } `
+                } catch { '--- [CANNOT READ FILE] ---' } `
+            } else { '--- [BINARY FILE] ---' }\""
 
     if ($file -and ($file -ne "")) {
         Write-Host "Opening: $file" -ForegroundColor Green
@@ -25,6 +24,8 @@ function mcc {
         Write-Host "No file selected." -ForegroundColor Yellow
     }
 }
+
+
 
 
 
