@@ -19,11 +19,12 @@ function mcc {
 
 
 
+
 # 🔹 Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
 function cdd {
     $dir = fd --type directory --follow --exclude .git . |
            fzf --exact --prompt="Enter directory pattern: " `
-               --preview 'ls "{}"'
+               --preview "powershell -c 'Get-ChildItem -Path \"{}\" | Select-Object Name'"
 
     if ($dir) {
         cls
