@@ -40,6 +40,6 @@ cdd() {
 
 
 # Export functions to work in terminal
-export -f nvv
+export -f mcc
 export -f cdd
 
