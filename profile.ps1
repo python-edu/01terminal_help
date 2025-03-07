@@ -1,10 +1,11 @@
-# Użytkownik edytuje tę linię i wpisuje swój ulubiony edytor
-$env:EDITOR = "nvim"  # Zmień na: "micro", "vim", "code", itp.
+# edit the line below - enter your editor
+$env:EDITOR = "nvim"  #  "micro", "vim", "code", ...
 
-# Alias dla edytora
+# Alias
 Set-Alias mc $env:EDITOR
 
 
+# searches for files, previews and opens the selected file for editing
 function mcc {
     $file = fd --type file --follow --exclude .git . |
             fzf --ansi --preview 'bat --color=always {} --style=numbers,changes'
@@ -19,29 +20,8 @@ function mcc {
 
 
 
-
-# 🔹 Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
+# searches for directories, previews and navigates to the selected folder
 function cdd {
-    $homePath = $HOME -replace '\\', '/'  # Zamiana \ na / dla fd
-    $dir = fd --type directory --follow --exclude .git "$homePath" 2>$null | 
-           fzf --exact --prompt="Enter directory pattern: " `
-               --preview "powershell -NoProfile -ExecutionPolicy Bypass -Command Get-ChildItem -Path {} | Select-Object Name"
-
-    if ($dir) {
-        cls
-        Set-Location -Path $dir
-        Get-ChildItem
-    }
-}
-
-
-
-
-
-
-
-# Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
-function cdd1 {
     $dir = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName } | 
         fzf --exact --prompt="Enter directory template: " `
             --preview='dir {}'

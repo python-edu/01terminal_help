@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# define editor
-# EDITOR="micro"
-# EDITOR="nano"
-EDITOR="nvim"
+# edit the line below - enter your editor
+EDITOR="nvim"  #  "micro", "vim", "nano", ...
 
 alias mc=$EDITOR
 
@@ -17,7 +15,7 @@ mcc() {
         | fzf --exact \
               --prompt="Enter file pattern: " \
               --info=inline \
-              --preview='if file --mime {} | grep -q text; then cat {}; else echo " ---"; fi'
+              --preview='if file --mime {} | grep -q text; then batcat --color=always {} --style=numbers,changes; else echo " ---"; fi'
          )
     
     if [[ -n "$file" ]]; then

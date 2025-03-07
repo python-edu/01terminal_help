@@ -5,6 +5,8 @@
    - [Scoop instalation](#scoop-instalation)
    - [Micro instalation](#micro-instalation)
    - [fzf instalation](#fzf-instalation)
+   - [fd instalation](#fd-instalation)
+   - [bat instalation](#bat-instalation)
    - [PowerShell setup](#powershell-setup)
 
  - [For Linux](#for-linux)
@@ -57,7 +59,7 @@ If you really don't want to learn micro you can use any other text editor e.g. [
 
 
 
-## fzf instalation
+## fzf installation
 
 From [fzf github](https://github.com/junegunn/fzf):
 >- Warp, the intelligent terminal for developers
@@ -67,6 +69,25 @@ From [fzf github](https://github.com/junegunn/fzf):
 In the PowerShell terminal, type:
 ```
 scoop install fzf
+```
+
+
+## fd installation
+
+From [df github](https://github.com/sharkdp/fd):
+>`fd` is a program to find entries in your filesystem. It is a simple, fast and user-friendly alternative to find.
+```bash
+scoop install fd
+```
+
+
+## bat installation
+
+From [bat](https://github.com/sharkdp/bat):
+>A `cat(1)` clone with syntax highlighting and Git integration.
+
+```bash
+scoop install bat
 ```
 
 
@@ -119,7 +140,7 @@ terminal or saved to a special configuration file, the location of which is set 
   Example of installation:
   ```bash
   sudo apt update
-  sudo apt install fzf micro
+  sudo apt install fzf micro bat
   ```
 
 2. Configuration
