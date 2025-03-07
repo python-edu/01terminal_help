@@ -22,6 +22,20 @@ function mcc {
 
 # searches for directories, previews and navigates to the selected folder
 function cdd {
+    $dirs = fd . "$HOME" -u -a -t d -I -E .git
+    $dirs += $HOME  # Dodaj katalog domowy na końcu listy
+
+    $dir = $dirs | fzf --exact --prompt="Enter directory template: " --preview='dir {}'
+
+    if ($dir) {
+        cls
+        Set-Location -Path $dir
+        Get-ChildItem -Force
+    }
+}
+
+
+function cdd-copy {
     $dirs = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName }
     $dirs += $HOME  # Dodaj katalog domowy na końcu listy
 
