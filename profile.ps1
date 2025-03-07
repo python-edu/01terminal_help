@@ -21,21 +21,6 @@ function mcc {
 
 
 # searches for directories, previews and navigates to the selected folder
-function cdd1 {
-    $dir = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName } | 
-    $dirs = $dirs + $HOME  # Katalog domowy zawsze na końcu listy
-    $dir = $dirs
-    fzf --exact --prompt="Enter directory template: " --preview='dir {}'
-
-    if ($dir) {
-        cls
-        Set-Location -Path $dir
-        Get-ChildItem -Force
-    }
-}
-
-
-
 function cdd {
     $dirs = Get-ChildItem -Path $HOME -Directory -Recurse -Force | ForEach-Object { $_.FullName }
     $dirs += $HOME  # Dodaj katalog domowy na końcu listy
