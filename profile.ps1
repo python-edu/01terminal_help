@@ -6,10 +6,17 @@ Set-Alias mc $env:EDITOR
 
 
 function mcc {
-    $file = fd --type file --follow --exclude .git . | 
+    $file = fd --type file --follow --exclude .git . |
             fzf --ansi --preview 'bat --color=always {} --style=numbers,changes'
-    if ($file) { $env:EDITOR $file }
+
+    if ($file) {
+        Write-Host "Opening: $file" -ForegroundColor Green
+        & $env:EDITOR $file
+    } else {
+        Write-Host "No file selected." -ForegroundColor Yellow
+    }
 }
+
 
 
 
