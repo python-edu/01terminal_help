@@ -22,16 +22,18 @@ function mcc {
 
 # 🔹 Funkcja cdd - wyszukiwanie katalogów i przechodzenie do wybranego
 function cdd {
-    $dir = fd --type directory --follow --exclude .git $HOME |
+    $homePath = $HOME -replace '\\', '/'  # Zamienia \ na / dla fd
+    $dir = fd --type directory --follow --exclude .git "$homePath" |
            fzf --exact --prompt="Enter directory pattern: " `
-               --preview "powershell -c 'Get-ChildItem -Path \"{}\" -Force | Select-Object Name'"
+               --preview "powershell -c 'Get-ChildItem -Path \"{}\" | Select-Object Name'"
 
     if ($dir) {
         cls
         Set-Location -Path $dir
-        Get-ChildItem -Force
+        Get-ChildItem
     }
 }
+
 
 
 
