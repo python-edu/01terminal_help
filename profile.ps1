@@ -9,13 +9,15 @@ function mcc {
     $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName | 
         fzf --exact --prompt="Enter file pattern: " --info=inline `
             --preview="powershell -NoProfile -ExecutionPolicy Bypass -Command `
-            \"`$file = '{}'; `
-            if ((Get-Item `$file).Length -lt 1048576) { `
-                try { `
-                    `$content = Get-Content -Path `$file -Raw -ErrorAction Stop; `
-                    if (`$content -match '\P{C}') { `$content } else { '--- [BINARY FILE] ---' } `
-                } catch { '--- [CANNOT READ FILE] ---' } `
-            } else { '--- [BINARY FILE] ---' }\""
+            \"`$f = '{}'; `
+            if (Test-Path `$f -PathType Leaf) { `
+                if ((Get-Item `$f).Length -lt 1048576) { `
+                    try { `
+                        `$content = Get-Content -Path `$f -Raw -ErrorAction Stop; `
+                        if (`$content -match '\\P{C}') { `$content } else { '--- [BINARY FILE] ---' } `
+                    } catch { '--- [CANNOT READ FILE] ---' } `
+                } else { '--- [BINARY FILE] ---' } `
+            } else { '--- [FILE NOT FOUND] ---' }\""
 
     if ($file -and ($file -ne "")) {
         Write-Host "Opening: $file" -ForegroundColor Green
@@ -24,7 +26,6 @@ function mcc {
         Write-Host "No file selected." -ForegroundColor Yellow
     }
 }
-
 
 
 
