@@ -9,7 +9,7 @@ Set-Alias mc $env:EDITOR
 function mcc {
     $file = Get-ChildItem -Path $HOME -File -Recurse -Force | Select-Object -ExpandProperty FullName | 
         fzf --exact --prompt="Enter file pattern: " --info=inline `
-            --preview="powershell -Command { if (Test-Path '{}') { Get-Content -Path '{}' -ErrorAction SilentlyContinue | Out-String } else { ' ---' } }"
+            --preview="cat {}"
 
     if ($file -and ($file -ne "")) {
         Write-Host "Opening: $file" -ForegroundColor Green
@@ -18,6 +18,8 @@ function mcc {
         Write-Host "No file selected." -ForegroundColor Yellow
     }
 }
+
+
 
 
 
