@@ -33,6 +33,7 @@ cdd() {
           )
     
     if [[ -n "$dir" ]]; then
+        clear
         cd "$dir"
         ls -gh
     fi

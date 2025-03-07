@@ -2,11 +2,11 @@
 
  - [General information](#general-information)
  - [For Windows](#for-windows)
-   - [Scoop instalation](#scoop-instalation)
-   - [Micro instalation](#micro-instalation)
-   - [fzf instalation](#fzf-instalation)
-   - [fd instalation](#fd-instalation)
-   - [bat instalation](#bat-instalation)
+   - [Scoop installation](#scoop-installation)
+   - [Micro installation](#micro-installation)
+   - [fzf installation](#fzf-installation)
+   - [fd installation](#fd-installation)
+   - [bat installation](#bat-installation)
    - [PowerShell setup](#powershell-setup)
 
  - [For Linux](#for-linux)
@@ -33,7 +33,7 @@ Clone this repository to your computer:
 
 # For Windows
 
-## Scoop instalation
+## Scoop installation
 
 From [Scoop](https://scoop.sh/#/):
  >- a command-line installer for Windows.
@@ -45,7 +45,7 @@ From [Scoop](https://scoop.sh/#/):
  ```
 
 
-## Micro instalation
+## Micro installation
 
 From [micro web](https://micro-editor.github.io/):
 >a modern and intuitive terminal-based text editor
