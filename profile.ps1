@@ -9,29 +9,29 @@ Set-Alias mc $env:EDITOR
 
 # Funkcja mcc - wyszukiwanie plików i otwieranie w edytorze
 function mcc {
-    $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue |
-        Select-Object -ExpandProperty FullName |
+    $file = Get-ChildItem -Path $HOME -File -Recurse -Force -ErrorAction SilentlyContinue | 
+        Select-Object -ExpandProperty FullName | 
         fzf --exact --prompt="Enter file pattern: " --info=inline `
-            --preview="powershell -NoProfile -ExecutionPolicy Bypass -Command {
-                `$f = '{}'
+            --preview="powershell -NoProfile -Command {
+                param([string]`$f)
                 if (Test-Path `$f -PathType Leaf) {
                     `$size = (Get-Item `$f).Length
                     if (`$size -lt 1048576) {
                         try {
                             `$content = Get-Content -Path `$f -Raw -ErrorAction Stop
-                            if ([System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::UTF8.GetBytes(`$content)) -match '[\p{C}]') {
-                                Write-Output '--- [BINARY FILE] ---'
+                            if (`$content -match '[\x00-\x08\x0E-\x1F\x7F]') {
+                                '--- [BINARY FILE] ---'
                             } else {
-                                Write-Output `$content
+                                `$content
                             }
                         } catch {
-                            Write-Output '--- [CANNOT READ FILE] ---'
+                            '--- [CANNOT READ FILE] ---'
                         }
                     } else {
-                        Write-Output '--- [BINARY FILE] ---'
+                        '--- [BINARY FILE] ---'
                     }
                 } else {
-                    Write-Output '--- [FILE NOT FOUND] ---'
+                    '--- [FILE NOT FOUND] ---'
                 }
             }" --preview-window=wrap
 
