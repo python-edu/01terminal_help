@@ -10,6 +10,7 @@
    - [PowerShell setup](#powershell-setup)
 
  - [For Linux](#for-linux)
+ - [Micro Help](#micro-help)
  - [Tools](#tools)
  - [Web browser](#web-browser)
 
