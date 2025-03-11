@@ -13,6 +13,7 @@
  - [Micro Help](#micro-help)
  - [Tools](#tools)
  - [Web browser](#web-browser)
+ - [Windows terminal settings](#windows-terminal-settings)
 
 
  
@@ -205,3 +206,14 @@ To view rendered `markdown` files, you may find useful browser extensions:
   3. Microsoft Edge: Markdown Preview
   4. Safari: QLMarkdown
 
+
+# Windows terminal settings
+
+Creating a new account in Windows 11 requires each time settings according to the user's preferences.
+The `settings.json` file contains the settings for the terminal in Windows 11. Example settings:
+  - window size
+  - font size
+  - color scheme
+
+Paste this file in a specific location on the disk allows you to easily transfer settings between accounts. Location:
+  > `C:\Users\pk\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState`

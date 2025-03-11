@@ -1,0 +1,89 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [
+        {
+            "command": {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "centerOnLaunch": true,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "Windows PowerShell",
+    "initialCols": 150,
+    "initialRows": 40,
+    "newTabMenu": [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": {
+        "defaults": {
+            "colorScheme": "One Half Dark",
+            "font": {
+                "size": 14
+            },
+            "startingDirectory": "%USERPROFILE%"
+        },
+        "list": [
+            {
+                "commandline": "$env:SystemRoot\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "$env:SystemRoot\\System32\\cmd.exe",
+                "name": "Command Prompt"
+            },
+            {
+                "name": "Git Bash",
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
+                "hidden": true
+            },
+            {
+                "name": "Azure Cloud Shell",
+                "hidden": true
+            }
+        ]
+    },
+    "schemes": [
+        {
+            "name": "One Half Dark",
+            "background": "#282C34",
+            "foreground": "#DCDCDC",
+            "black": "#282C34",
+            "blue": "#61AFEF",
+            "cyan": "#56B6C2",
+            "green": "#98C379",
+            "purple": "#C678DD",
+            "red": "#E06C75",
+            "white": "#ABB2BF",
+            "yellow": "#E5C07B"
+        }
+    ],
+    "themes": []
+}
+
