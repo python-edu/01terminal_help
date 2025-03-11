@@ -24,7 +24,7 @@ Set-Alias mc $env:EDITOR
 
 # searches for files, previews and opens the selected file for editing
 function mcc {
-    $file = fd --type file --follow --exclude .git . |
+    $file = fd . "$HOME" -u -t f --follow --exclude .git . |
             fzf --ansi --preview 'bat --color=always {} --style=numbers,changes'
 
     if ($file) {
