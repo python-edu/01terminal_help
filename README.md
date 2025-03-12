@@ -215,5 +215,18 @@ The `settings.json` file contains the settings for the terminal in Windows 11. E
   - font size
   - color scheme
 
-Paste this file in a specific location on the disk allows you to easily transfer settings between accounts. Location:
-  > `C:\Users\pk\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState`
+Paste this file in a specific location on the disk allows you to easily transfer settings between accounts.
+
+1. Determining the location of the `settings.json` file:
+  - open powershell
+  - run the `cdd` function
+  - type: `microsoft terminal state`
+  - go to the directory containing the `settings.json` file
+  ![settings.json location](./imgs/folder_search.jpg)
+
+2. For safety, make a copy of the original file:
+  ```bash
+  cp settings.json settings-copy.json
+  ```
+3. Copy the settings.json file (downloaded from gidhub):
+  ![Copy settings.json](./imgs/cp_settings.jpg)
