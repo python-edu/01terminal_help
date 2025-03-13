@@ -98,38 +98,35 @@ scoop install bat
 The solutions in this section are intended for Windows users with a PowerShell terminal. Commands are executed in the
 terminal or saved to a special configuration file, the location of which is set in the `$PROFILE` environment variable.
 
-**Exception**:
->`$EDITOR` - this variable must be set in each operating system.
-
-
 1. **PROFILE**
-  `$PROFILE`: A PowerShell system variable that stores the path to the user's profile file. This is a script that is
+  `$PROFILE`: A PowerShell system variable that stores the path to the user's `profile file`. This is a script that is
   automatically executed when PowerShell starts. In the PowerShell terminal:
   
   >- `echo $PROFILE`: this will show you the location of the PowerShell configuration file eg.:
   `C:\Users\test1\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
-  >- `dir Documents`: this will show if there is a folder `WindowsPowerShell` in the `Documents` directory:
+  >- `dir Documents`: this will show if there is a folder `WindowsPowerShell` in the `Documents` directory. If the
+     `WindowsPowerShell` directory does not exist it should be created:
     ```mkdir .\Documents\WindowsPowerShell```
-    use this command to create directory `WindowsPowerShell` if it does not exist
-  >- `micro $PROFILE`: editor will open/create the file for editing
+  >- to make `PowerShell` configuration easier you can use the `profile.ps1` file from this repository and copy it to
+     the path specified by `$PROFILE`. Assuming you have cloned the repository to your disk as in the image below:
+     ![profile location](./imgs/profile_location.jpg)
 
-
-2. **EDITOR variable**
-  >`$env:EDITOR`: An environment variable that indicates the default text editor used in the terminal. Many programs can use
-  this variable, such as Git, VS Code, ipython, etc. In the `$PROFILE` file add the following entry:
-  
+  >- now you can copy the file using the command:
+  ```bash
+  cp profile.ps1 $PROFILE
   ```
-  $env:EDITOR = "micro"
-  ```
+  >- restart `PowerShell` to load the new configuration.
 
-3. **Aliases**
-  For frequently executed commands, you can define shortcuts, so-called aliases, which speed up work, e.g.:
-  
-  ```micro $PROFILE
-  Set-Alias mc micro
-  ```
-  - this allows you to launch the micro editor by typing 2 characters `mc`.
+2. Editor
+In the `$PROFILE` file, a variable is set that configures the editor that will be used in the terminal. The default one
+is `micro`. To set a different editor:
+- open the file for editing: `micro $PROFILE` 
+- go to the line `$env:EDITOR = "micro"  #  "micro", "vim", "code", ...` and type your editor (if installed)
 
+3.  Functions
+Two functions are defined in the configuration file:
+  >- `mcc`: searches for files, displays the contents of text files and opens the selected file for reading
+  >- `cdd`: searches for directories, displays the contents of the selected directory and goes to the selected directory
 
 
 # For Linux
