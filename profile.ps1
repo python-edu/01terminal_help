@@ -51,3 +51,44 @@ function cdd {
     }
 }
 
+
+# Function: mcc
+# Searches for files and opens selected one in editor
+function mcc1 {
+    param (
+        [string]$StartDir = $HOME
+    )
+
+    $file = fd . $StartDir -u -t f --follow --exclude .git |
+            fzf --ansi --prompt="Enter file pattern [$StartDir]: " `
+                --preview 'bat --color=always {} --style=numbers,changes'
+
+    if ($file) {
+        Write-Host "Opening: $file" -ForegroundColor Green
+        & $env:EDITOR $file
+    } else {
+        Write-Host "No file selected." -ForegroundColor Yellow
+    }
+}
+
+# Function: cdd
+# Searches for directories and navigates to the selected one
+function cdd1 {
+    param (
+        [string]$StartDir = $HOME
+    )
+
+    $dirs = fd . $StartDir -u -a -t d -I --exclude .git
+    $dirs += $StartDir  # Include base directory at the end
+
+    $dir = $dirs | fzf --exact --prompt="Enter directory template [$StartDir]: " `
+                      --preview 'dir {}'
+
+    if ($dir) {
+        Clear-Host
+        Set-Location -Path $dir
+        Get-ChildItem -Force
+    } else {
+        Write-Host "No directory selected." -ForegroundColor Yellow
+    }
+}
