@@ -8,6 +8,7 @@
    - [fd installation](#fd-installation)
    - [bat installation](#bat-installation)
    - [PowerShell setup](#powershell-setup)
+   - [PowerShell 7 installation](#powershell-7-information)
 
  - [For Linux](#for-linux)
  - [Micro Help](#micro-help)
@@ -127,6 +128,14 @@ is `micro`. To set a different editor:
 Two functions are defined in the configuration file:
   >- `mcc`: searches for files, displays the contents of text files and opens the selected file for reading
   >- `cdd`: searches for directories, displays the contents of the selected directory and goes to the selected directory
+
+
+## PowerShell 7 installation
+... xxx
+
+
+
+---
 
 
 # For Linux
