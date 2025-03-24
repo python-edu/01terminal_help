@@ -131,8 +131,10 @@ Two functions are defined in the configuration file:
 
 
 ## PowerShell 7 installation
-... xxx
-
+Your Windows system probably does not have the latest version of Powershell installed. Usually the version available on
+your system is much older (series 5) than the current one (series 7). If you want to use the latest version, you will
+need to install it. There are more than one way to install it and they are described in the
+documentation [learn.microsoft.com](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
 
 
 ---
