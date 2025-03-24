@@ -74,8 +74,6 @@ function cdd {
         $StartDir = $StartDir.TrimEnd('\','/')
     }
 
-    echo "wejscie: $StartDir"
-
     $dirs = @(
         (Convert-Path $StartDir)
         (fd "" "$StartDir" -t d -u -a -I --exclude .git)
