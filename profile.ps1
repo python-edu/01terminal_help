@@ -24,6 +24,11 @@ Set-Alias mc $env:EDITOR
 
 # Function: mcc
 # searches for files, previews and opens the selected file for editing
+# usage:
+# mcc - starts searching in the user's home directory
+# mcc . / mcc .. / mcc ../.. - starts searching in the current directory (.), the directory one level above the
+#                              current directory (..), two levels above (../..)
+# mcc path_to_folder - starts searching in the specified directory
 function mcc {
     param (
         [string]$StartDir
@@ -35,8 +40,10 @@ function mcc {
         $StartDir = $StartDir.TrimEnd('\','/')
     }
 
-    $file = fd . "$HOME" -u -t f --follow --exclude .git . |
-            fzf --ansi --preview 'bat --color=always {} --style=numbers,changes'
+    $StartDir = Convert-Path $StartDir
+
+    $file = fd "" "$StartDir" -a -u -t f --follow --exclude .git |
+            fzf +s --ansi --preview 'bat --color=always {} --style=numbers,changes'
 
     if ($file) {
         Write-Host "Opening: $file" -ForegroundColor Green
@@ -47,8 +54,15 @@ function mcc {
 }
 
 
+
 # Function: cdd
 # Searches for directories and navigates to the selected one
+# usage:
+# cdd - starts searching in the user's home directory
+# cdd . / cdd .. / cdd ../.. - starts searching in the current directory (.), the directory one level above the
+#                              current directory (..), two levels above (../..)
+# cdd path_to_folder - starts searching in the specified directory
+
 function cdd {
     param (
         [string]$StartDir
@@ -67,7 +81,7 @@ function cdd {
         (fd "" "$StartDir" -t d -u -a -I --exclude .git)
     )
 
-    $dir = $dirs | fzf --exact --prompt="Enter directory template:" --preview 'dir {}'
+    $dir = $dirs | fzf +s --exact --prompt="Enter directory template:" --preview 'dir {}'
 
     if ($dir) {
         Set-Location -Path $dir
