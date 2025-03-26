@@ -141,9 +141,10 @@ documentation [learn.microsoft.com](https://learn.microsoft.com/en-us/powershell
   >`winget install --id Microsoft.PowerShell --source winget`
 3. Launch terminal - `Win` keyboard, type `terminal`. You may get an error like:
   ![error](imgs/powshell_instal02.jpg)
-  - open settings and click (in the left panel) PowerShell
+  - open settings
   ![settings](imgs/powshell_instal03.jpg)
-  - in settings click `Command line`, delete the existing entry, type `pwsh`
+  - in settings click (in the left panel) PowerShellclick, next click `Command line`
+  - delete the existing entry and type `pwsh`
   ![Command line](imgs/powshell_instal04.jpg)
   ![pwsh](imgs/powshell_instal05.jpg)
   - save settings, close the terminal and restart it
