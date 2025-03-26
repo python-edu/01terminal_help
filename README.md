@@ -8,7 +8,7 @@
    - [fd installation](#fd-installation)
    - [bat installation](#bat-installation)
    - [PowerShell setup](#powershell-setup)
-   - [PowerShell 7 installation](#powershell-7-information)
+   - [PowerShell 7 installation](#powershell-7-installation)
 
  - [For Linux](#for-linux)
  - [Micro Help](#micro-help)
@@ -134,7 +134,31 @@ Two functions are defined in the configuration file:
 Your Windows system probably does not have the latest version of Powershell installed. Usually the version available on
 your system is much older (series 5) than the current one (series 7). If you want to use the latest version, you will
 need to install it. There are more than one way to install it and they are described in the
-documentation [learn.microsoft.com](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
+documentation [learn.microsoft.com](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5). Example installation using `winget`:
+1.Check available powershell versions: when using `winget` for the first time a message will appear - confirm it (YES) 
+  ![First use of winget](imgs/powshell_instal01.jpg)
+2. Install PowerShell:
+  >`winget install --id Microsoft.PowerShell --source winget`
+3. Launch terminal - `Win` keyboard, type `terminal`. You may get an error like:
+  ![error](imgs/powshell_instal02.jpg)
+  - open settings and click (in the left panel) PowerShell
+  ![settings](imgs/powshell_instal03.jpg)
+  - in settings click `Command line`, delete the existing entry, type `pwsh`
+  ![Command line](imgs/powshell_instal04.jpg)
+  ![pwsh](imgs/powshell_instal05.jpg)
+  - save settings, close the terminal and restart it
+
+Different versions of PowerShell use different configuration files stored in different directories - as you can see in the image below.
+1. Open two separate windows:
+  - PowerShell version 5 - `Win` key, type `powershell`
+  - PowerShell version 7 - `Win` key, type `terminal`
+
+2. Run the commands shown in the images below:
+  - check if the directory with $PROFILE exists, if not - create it
+  - copy the file `profile.ps1` to $PROFILE
+  - restore the terminal - it should be ready to work 
+  ![profile directory](imgs/powshell_instal06.jpg)
+  ![profile copy](imgs/powshell_instal07.jpg)
 
 
 ---
