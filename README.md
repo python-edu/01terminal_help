@@ -50,12 +50,17 @@ From [Scoop](https://scoop.sh/#/):
 
 ## Micro installation
 
-From [micro web](https://micro-editor.github.io/):
+From [micro web](https://micro-editor.github.io/) or [github](https://github.com/zyedidia/micro):
 >a modern and intuitive terminal-based text editor
 
 In the PowerShell terminal, type:
-```
+```bash
 scoop install micro
+```
+
+or with `winget`:
+```bash
+winget install zyedidia.micro
 ```
 
 If you really don't want to learn micro you can use any other text editor e.g. [Nnotepad++](https://notepad-plus-plus.org/).
@@ -138,10 +143,16 @@ documentation [learn.microsoft.com](https://learn.microsoft.com/en-us/powershell
 
 Example installation using `winget`:
 
-1. Check available powershell versions: when using `winget` for the first time a message will appear - confirm it (YES) 
+1. Check available powershell versions: when using `winget` for the first time a message will appear - confirm it (YES).
+   ```bash
+   winget search zyedidia.micro
+   ```
   ![First use of winget](imgs/powshell_instal01.jpg)
 2. Install PowerShell:
-  >`winget install --id Microsoft.PowerShell --source winget`
+   ```bash
+   winget install --id Microsoft.PowerShell --source winget
+   ```
+
 3. Launch terminal - `Win` keyboard, type `terminal`. You may get an error like:
   ![error](imgs/powshell_instal02.jpg)
   - open settings
