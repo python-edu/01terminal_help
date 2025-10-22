@@ -1,0 +1,11 @@
+{
+  "autoindent": true,
+  "tabstospaces": true,
+  "tabsize": 4,
+
+  "detectindent": false,
+  "rmtrailingws": true,
+
+  "colorcolumn": 80
+}
+

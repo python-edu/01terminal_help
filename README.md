@@ -11,7 +11,7 @@
    - [PowerShell 7 installation](#powershell-7-installation)
 
  - [For Linux](#for-linux)
- - [Micro Help](#micro-help)
+ - [Micro](#micro)
  - [Tools](#tools)
  - [Web browser](#web-browser)
  - [Windows terminal settings](#windows-terminal-settings)
@@ -145,7 +145,7 @@ Example installation using `winget`:
 
 1. Check available powershell versions: when using `winget` for the first time a message will appear - confirm it (YES).
    ```bash
-   winget search zyedidia.micro
+   winget search Microsoft.PowerShell
    ```
   ![First use of winget](imgs/powshell_instal01.jpg)
 2. Install PowerShell:
@@ -214,9 +214,55 @@ the image below.
   source $HOME/.scripts/fzf_linux_func.sh
   ```
 
+---
+
+# Micro
+
+## Micro settings
+
+1. Configuring the `micro` editor involves placing entries in the `settings.json` file. File location:
+   - Windows:
+     ```bash
+     # PowerShell
+     $env:APPDATA\micro\settings.json
+
+     # CMD.exe
+     %APPDATA%\micro\settings.json
+
+     # example: C:\Users\<YourName>\AppData\Roaming\micro\settings.json
+     ```
+
+   - Linux:
+     ```bash
+     ~/.config/micro/settings.json
+     ```
+
+   - macOs:
+     ```bash
+     ~/Library/Application Support/micro/settings.json
+     ```
+
+2. Minimal settings (Python-friendly):
+   ```bash
+   {
+     "autoindent": true,
+     "tabstospaces": true,
+     "tabsize": 4,
+
+     "detectindent": false,
+     "rmtrailingws": true,
+
+     "colorcolumn": 80
+   }
+   ```
+
+3. **settings_micro.json**
+
+   The settings shown above are available in the repository in the `settings_micro.json` file. Copy the file to the
+   appropriate location and rename it to `settings.json`
 
 
-# Micro Help
+## Micro help
 
 1. Link to [Default Keys](https://github.com/zyedidia/micro/blob/master/runtime/help/defaultkeys.md)
 2. In the opened editor, enter:
