@@ -249,6 +249,7 @@ the image below.
      "tabstospaces": true,
      "tabsize": 4,
 
+     "smartpaste": false,
      "detectindent": false,
      "rmtrailingws": true,
 
@@ -261,6 +262,24 @@ the image below.
    The settings shown above are available in the repository in the `settings_micro.json` file. Copy the file to the
    appropriate location and rename it to `settings.json`
 
+## `set` - configuring Micro Using set
+
+  1. Open the Micro editor by typing micro in the terminal.
+  2. Press Ctrl+E to open the command prompt.
+  3. Enter each set command below separately and press Enter.
+  4. Settings are applied immediately and saved automatically for future sessions.icro 
+
+      ```
+      set autoindent true
+      set tabstospaces true
+      set tabsize 4
+      
+      set smartpaste false
+      set detectindent false
+      set rmtrailingws true
+      
+      set colorcolumn 80
+      ```
 
 ## Micro help
 

@@ -3,6 +3,7 @@
   "tabstospaces": true,
   "tabsize": 4,
 
+  "smartpaste": false,
   "detectindent": false,
   "rmtrailingws": true,
 
