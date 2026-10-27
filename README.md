@@ -245,11 +245,12 @@ the image below.
 2. Minimal settings (Python-friendly):
    ```bash
    {
-     "autoindent": true,
+     "autoindent": false,
      "tabstospaces": true,
      "tabsize": 4,
 
      "smartpaste": false,
+     "paste": true
      "detectindent": false,
      "rmtrailingws": true,
 
@@ -270,11 +271,12 @@ the image below.
   4. Settings are applied immediately and saved automatically for future sessions.icro 
 
       ```
-      set autoindent true
+      set autoindent false
       set tabstospaces true
       set tabsize 4
       
       set smartpaste false
+      set paste true
       set detectindent false
       set rmtrailingws true
       
